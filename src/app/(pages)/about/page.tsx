@@ -1,8 +1,8 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
-export default function About() {
+const AboutPage  = () =>  {
     return (
-        <section className='relative w-full overflow-hidden mt-20'>
+        <section className='relative w-full overflow-hidden'>
             <MaxWidthWrapper>
                 <div>
                     <h1>About</h1>
@@ -11,3 +11,5 @@ export default function About() {
         </section>
     )
 }
+
+export default AboutPage;

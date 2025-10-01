@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ContactPopup from "@/components/ContactPopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-slate-50 text-black`}
       >
           <Navbar />
-        <main className="flex flex-col flex-1">
+        <main className="relative flex flex-col flex-1">
           {children}
+          <ContactPopup />
         </main>
           <Footer />
       </body>
