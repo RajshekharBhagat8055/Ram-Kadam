@@ -1,6 +1,7 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import QueryForm from '@/components/QueryForm'
 import { Button } from '@/components/ui/button'
+import ClientOnly from '@/components/ClientOnly'
 import React from 'react'
 
 export default function page() {
@@ -12,7 +13,9 @@ export default function page() {
                 <Button size={'lg'} className='rounded-full'>Track Now!</Button>
             </div>
         </MaxWidthWrapper>
-        <QueryForm />
+        <ClientOnly>
+          <QueryForm />
+        </ClientOnly>
     </section>
   )
 }

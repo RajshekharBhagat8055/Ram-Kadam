@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { X } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function ContactPopup() {
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const hasBeenDismissed = localStorage.getItem('contact-popup-dismissed');
@@ -67,16 +69,16 @@ export default function ContactPopup() {
                     id="popup-title"
                     className="text-3xl font-semibold text-orange-500 text-center"
                 >
-                    We&apos;re here for you 24/7
+                    {t("contactPopup.title")}
                 </h1>
 
                 <p className="text-center text-slate-600">
-                    Do&apos;nt wait! Reach out to us at any time of the day or night. Help is just one click or call away.
+                    {t("contactPopup.description")}
                 </p>
 
                 <Link href="/contact" className="w-full" onClick={handleClose}>
                     <Button size="lg" className="rounded-full w-full">
-                        Contact Us
+                        {t("contactPopup.contactUs")}
                     </Button>
                 </Link>
 
@@ -85,7 +87,7 @@ export default function ContactPopup() {
                     className="text-orange-500 hover:text-orange-600 underline underline-offset-4 transition-colors"
                     onClick={handleClose}
                 >
-                    Learn more
+                    {t("contactPopup.learnMore")}
                 </Link>
             </div>
         </div>

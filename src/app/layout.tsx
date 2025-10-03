@@ -4,6 +4,10 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactPopup from "@/components/ContactPopup";
+import I18nProvider from "@/components/I18nProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ScrollToTop from "@/components/ScrollToTop";
+import ClientOnly from "@/components/ClientOnly";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +34,24 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-slate-50 text-black`}
       >
-          <Navbar />
-        <main className="relative flex flex-col flex-1">
-          {children}
-          <ContactPopup />
-        </main>
-          <Footer />
+        <I18nProvider>
+          <ClientOnly>
+            <Navbar />
+          </ClientOnly>
+          <main className="relative flex flex-col flex-1">
+            {children}
+            <ClientOnly>
+              <ContactPopup />
+            </ClientOnly>
+            <ClientOnly>
+              <LanguageSwitcher />
+            </ClientOnly>
+            <ScrollToTop />
+          </main>
+          <ClientOnly>
+            <Footer />
+          </ClientOnly>
+        </I18nProvider>
       </body>
     </html>
   );

@@ -14,8 +14,11 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { useTranslation } from "react-i18next"
 
 export default function QueryForm() {
+  const { t } = useTranslation();
+  
   const form = useForm<QueryFormData>({
     resolver: zodResolver(queryFormSchema),
     defaultValues: {
@@ -42,9 +45,9 @@ export default function QueryForm() {
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-6 bg-white mt-10 rounded-xl shadow-md">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">Complaint Form</h1>
+        <h1 className="text-3xl font-bold">{t("queryForm.title")}</h1>
         <p className="text-muted-foreground">
-          Please fill out the form below with your complaint details
+          {t("queryForm.subtitle")}
         </p>
       </div>
 
@@ -57,9 +60,9 @@ export default function QueryForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name *</FormLabel>
+                  <FormLabel>{t("queryForm.name")} *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your full name" {...field} />
+                    <Input placeholder={t("queryForm.namePlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -72,11 +75,11 @@ export default function QueryForm() {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone Number *</FormLabel>
+                  <FormLabel>{t("queryForm.phone")} *</FormLabel>
                   <FormControl>
                     <Input 
                       type="tel" 
-                      placeholder="Enter your phone number" 
+                      placeholder={t("queryForm.phonePlaceholder")} 
                       {...field} 
                     />
                   </FormControl>
@@ -92,9 +95,9 @@ export default function QueryForm() {
             name="address"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Address *</FormLabel>
+                <FormLabel>{t("queryForm.address")} *</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your complete address" {...field} />
+                  <Input placeholder={t("queryForm.addressPlaceholder")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -108,9 +111,9 @@ export default function QueryForm() {
               name="villageName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Village Name *</FormLabel>
+                  <FormLabel>{t("queryForm.villageName")} *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter village name" {...field} />
+                    <Input placeholder={t("queryForm.villagePlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,9 +126,9 @@ export default function QueryForm() {
               name="taluka"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Taluka *</FormLabel>
+                  <FormLabel>{t("queryForm.taluka")} *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter taluka" {...field} />
+                    <Input placeholder={t("queryForm.talukaPlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -138,9 +141,9 @@ export default function QueryForm() {
               name="district"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>District *</FormLabel>
+                  <FormLabel>{t("queryForm.district")} *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter district" {...field} />
+                    <Input placeholder={t("queryForm.districtPlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -154,10 +157,10 @@ export default function QueryForm() {
             name="complaintDetails"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Complaint Details *</FormLabel>
+                <FormLabel>{t("queryForm.complaintDetails")} *</FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Please describe your complaint in detail..."
+                    placeholder={t("queryForm.complaintPlaceholder")}
                     className="min-h-32"
                     {...field} 
                   />
@@ -175,14 +178,14 @@ export default function QueryForm() {
               onClick={onClear}
               className="min-w-24"
             >
-              Clear
+              {t("queryForm.clear")}
             </Button>
             <Button 
               type="submit" 
               className="min-w-24"
               disabled={form.formState.isSubmitting}
             >
-              {form.formState.isSubmitting ? "Submitting..." : "Submit"}
+              {form.formState.isSubmitting ? t("queryForm.submitting") : t("queryForm.submit")}
             </Button>
           </div>
         </form>

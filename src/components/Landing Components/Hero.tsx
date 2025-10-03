@@ -63,29 +63,6 @@ export default function Hero({ slides, autoPlayInterval = 5000 }: HeroProps) {
         },
     }
 
-    const textVariants: Variants = {
-        enter: {
-            y: 50,
-            opacity: 0,
-        },
-        center: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeOut",
-            },
-        },
-        exit: {
-            y: -50,
-            opacity: 0,
-            transition: {
-                duration: 0.5,
-            },
-        },
-    }
-
     return (
         <div className="relative w-full md:min-h-screen min-h-[80vh] overflow-hidden bg-slate-900">
             <AnimatePresence initial={false} mode="sync">
@@ -162,9 +139,9 @@ export default function Hero({ slides, autoPlayInterval = 5000 }: HeroProps) {
                                     duration: 0.8,
                                     ease: [0.43, 0.13, 0.23, 0.96]
                                 }}
-                                className="text-center"
+                                className="relative text-center "
                             >
-
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-transparent -z-10" />
                                 {/* Epic Title with Multiple Effects */}
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
