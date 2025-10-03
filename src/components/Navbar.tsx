@@ -49,7 +49,7 @@ export default function Navbar() {
                 {/* Logo Section */}
                 <div className="flex items-center gap-2">
                     <Link href="/" className="relative size-12 md:size-14">
-                        <Image src="/bgp-logo-color.png" alt="BJP Logo" fill className="object-cover aspect-square" />
+                        <Image src="/bjp-logo-color.png" alt="BJP Logo" fill className="object-cover aspect-square" />
                     </Link>
                     <MainHeading className="text-2xl md:text-5xl tracking-wide font-bold bg-gradient-to-b from-orange-600 via-orange-400 text-shadow-2xs to-orange-600 text-transparent bg-clip-text">{t("navbar.name")}</MainHeading>
                 </div>
