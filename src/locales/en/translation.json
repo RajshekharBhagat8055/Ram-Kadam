@@ -50,7 +50,10 @@
     "complaintPlaceholder": "Please describe your complaint in detail...",
     "submit": "Submit",
     "clear": "Clear",
-    "submitting": "Submitting..."
+    "submitting": "Submitting...",
+    "submitSuccess": "Query submitted successfully! Reference Number:",
+    "submitSuccessDesc": "Please save this reference number to track your complaint status.",
+    "submitError": "Failed to submit query. Please try again."
   },
   "contactPopup": {
     "title": "We're here for you 24/7",
@@ -61,7 +64,8 @@
   "language": {
     "english": "English",
     "hindi": "हिन्दी",
-    "marathi": "मराठी"
+    "marathi": "मराठी",
+    "changedTo": "Language changed to {{language}}"
   },
   "about": {
     "title": "Ram Kadam: A Journey of Service and Dedication",
@@ -70,6 +74,32 @@
     "paragraph3": "He is also known for his efforts in times of crisis. During the 2015 drought, Kadam was instrumental in bringing water trains (Jaldoot) to Latur, easing the burden of thousands. His Jalyukta Shivir initiatives further strengthened water conservation and community support.",
     "paragraph4": "Beyond service, Ram Kadam is celebrated for his cultural engagement. His Dahi Handi events in Mumbai, often graced by Bollywood celebrities, are among the city's most iconic festive celebrations, blending tradition with community spirit.",
     "paragraph5": "Through his leadership, Ram Kadam continues to embody the qualities of a people's representative — accessible, action-driven, and committed to uplifting the lives of his constituents. His journey is a testament to the power of perseverance and the trust people place in those who work tirelessly for their well-being.",
+    "paragraph6": "Shri Ram Kadam is a dynamic and dedicated leader, serving as the Member of Legislative Assembly (MLA) from the Ghatkopar West constituency in Maharashtra. Known for his relentless commitment to public welfare, Ram Kadam has emerged as a trusted voice for the people, working tirelessly for their progress and well-being.",
+    "paragraph7": "With years of experience in public service and grassroots activism, Ram Kadam has championed numerous development initiatives, from strengthening local infrastructure and promoting educational opportunities to supporting women's empowerment and addressing youth employment challenges. His energetic approach and accessibility have won him widespread respect across communities.",
+    "paragraph8": "As an influential member of the Bharatiya Janata Party (BJP), Ram Kadam regularly voices citizen concerns within the Maharashtra Legislative Assembly and works closely with government bodies to ensure effective delivery of government schemes and prompt resolution of constituents' issues.",
+    "paragraph9": "A strong advocate for social harmony and cultural values, Ram Kadam frequently organizes health camps, blood donation drives, employment fairs, and celebratory community events. He is especially recognized for his swift interventions during crises and natural calamities, consistently standing by residents in times of need.",
+    "paragraph10": "With a vision for inclusive growth and a better future for all, Ram Kadam continues his journey to bring positive, lasting change in the lives of people.",
     "readMore": "Read More"
+  },
+  "statusTracker": {
+    "title": "Track Complaint Status",
+    "description": "Enter your reference number to check the status of your complaint",
+    "placeholder": "Enter your reference number (e.g., QRY2024000001)",
+    "track": "Track",
+    "tracking": "Tracking...",
+    "queryFound": "Query found successfully!",
+    "queryNotFound": "Query not found. Please check your reference number.",
+    "trackingError": "Error tracking query. Please try again.",
+    "enterReferenceNumber": "Please enter a reference number",
+    "queryDetails": "Query Details",
+    "referenceNumber": "Reference Number",
+    "personalInfo": "Personal Information",
+    "locationInfo": "Location Information",
+    "statusInfo": "Status Information",
+    "submittedOn": "Submitted On",
+    "lastUpdated": "Last Updated",
+    "resolvedOn": "Resolved On",
+    "assignedTo": "Assigned To",
+    "notes": "Notes"
   }
 }

@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { IoLanguage } from "react-icons/io5";
+import { toast } from "sonner";
 
 const languages = [
   { code: 'en', name: 'Eng'},
@@ -14,7 +16,7 @@ const languages = [
 
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
@@ -22,6 +24,14 @@ export default function LanguageSwitcher() {
   const handleLanguageChange = async (languageCode: string) => {
     await i18n.changeLanguage(languageCode);
     setIsOpen(false);
+    
+    // Show toast notification
+    const selectedLanguage = languages.find(lang => lang.code === languageCode);
+    const languageName = selectedLanguage ? t(`language.${selectedLanguage.code === 'en' ? 'english' : selectedLanguage.code === 'hi' ? 'hindi' : 'marathi'}`) : languageCode;
+    
+    toast.success(t('language.changedTo', { language: languageName }), {
+      duration: 3000,
+    });
   };
 
   return (
@@ -34,7 +44,7 @@ export default function LanguageSwitcher() {
         {/* Language options container */}
         <motion.div 
           className={cn(
-            "absolute bg-white rounded-full flex flex-col items-center justify-center overflow-hidden ring-2 ring-orange-500",
+            "absolute bg-white rounded-full flex flex-col items-center justify-center overflow-hidden",
             isOpen ? 'h-36' : 'h-12'
           )}
           initial={{ width: 48, height: 48 }}
@@ -45,13 +55,13 @@ export default function LanguageSwitcher() {
           transition={{ duration: 0.75, ease:[0.25, 1, 0.5, 1] }}
         >
           {isOpen && (
-            <div className="flex flex-col items-center gap-2 py-2">
+            <div className="flex flex-col items-center">
               {languages.map((language) => (
                 <button 
                   key={language.code} 
                   onClick={() => handleLanguageChange(language.code)} 
                   className={cn(
-                    "flex items-center justify-center transition-colors size-8 rounded-full text-xs font-semibold",
+                    "flex items-center justify-center transition-colors size-12 rounded-full text-xs font-semibold",
                     currentLanguage.code === language.code 
                       ? "bg-orange-500 text-white" 
                       : "hover:bg-orange-100"
@@ -68,12 +78,12 @@ export default function LanguageSwitcher() {
           animate={{y: isOpen ? '300%' : '0%'}}
           transition={{ duration: 0.75, ease:[0.25, 1, 0.5, 1] }}
           onClick={() => setIsOpen(!isOpen)}
-          className="size-12 flex items-center justify-center rounded-full bg-white ring-2 ring-orange-500 cursor-pointer z-10"
+          className="size-12 flex items-center justify-center rounded-full bg-white cursor-pointer z-10 hover:bg-orange-200 transition-colors duration-500"
         >
           {isOpen ? (
-            <X className="size-4" />
+            <X className="size-4 text-orange-500" />
           ) : (
-            <h1 className="text-sm font-semibold">{currentLanguage.name}</h1>
+            <IoLanguage className="size-6 text-orange-500"/>
           )}
         </motion.button>
       </motion.div>

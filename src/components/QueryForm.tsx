@@ -15,9 +15,13 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { useTranslation } from "react-i18next"
+import { useState } from "react"
+import axios from "axios"
+import { toast } from "sonner"
 
 export default function QueryForm() {
   const { t } = useTranslation();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<QueryFormData>({
     resolver: zodResolver(queryFormSchema),
@@ -32,10 +36,39 @@ export default function QueryForm() {
     },
   })
 
-  const onSubmit = (data: QueryFormData) => {
-    console.log("Form submitted:", data)
-    // TODO: Implement actual form submission logic
-    alert("Form submitted successfully! Check console for data.")
+  const onSubmit = async (data: QueryFormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      const response = await axios.post('/api/queries', data);
+      
+      if (response.data.success) {
+        toast.success(
+          `${t('queryForm.submitSuccess')} ${response.data.data.referenceNumber}`,
+          {
+            duration: 5000,
+            description: t('queryForm.submitSuccessDesc'),
+          }
+        );
+        
+        // Reset form after successful submission
+        form.reset();
+      }
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+      
+      if (error.response?.data?.message) {
+        toast.error(error.response.data.message, {
+          duration: 5000,
+        });
+      } else {
+        toast.error(t('queryForm.submitError'), {
+          duration: 5000,
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const onClear = () => {
@@ -183,9 +216,9 @@ export default function QueryForm() {
             <Button 
               type="submit" 
               className="min-w-24"
-              disabled={form.formState.isSubmitting}
+              disabled={isSubmitting}
             >
-              {form.formState.isSubmitting ? t("queryForm.submitting") : t("queryForm.submit")}
+              {isSubmitting ? t("queryForm.submitting") : t("queryForm.submit")}
             </Button>
           </div>
         </form>

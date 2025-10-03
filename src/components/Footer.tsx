@@ -2,7 +2,7 @@
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import { MdLocationOn, MdPhone, MdEmail, MdAccessTime } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
@@ -18,11 +18,10 @@ export default function Footer() {
     ];
 
     const socialLinks = [
-        { name: "Facebook", href: "#", icon: FaFacebook },
-        { name: "Twitter", href: "#", icon: FaTwitter },
-        { name: "Instagram", href: "#", icon: FaInstagram },
-        { name: "YouTube", href: "#", icon: FaYoutube },
-        { name: "LinkedIn", href: "#", icon: FaLinkedin },
+        { name: "Facebook", href: "https://www.facebook.com/ram.kadam/", icon: FaFacebook },
+        { name: "Twitter", href: "https://x.com/ramkadam", icon: FaTwitter },
+        { name: "Instagram", href: "https://www.instagram.com/ramkadam_official/?hl=en", icon: FaInstagram },
+        { name: "YouTube", href: "https://www.youtube.com/@ramkadam7019", icon: FaYoutube },
     ];
 
     return (
@@ -39,7 +38,7 @@ export default function Footer() {
                                 <div className="flex items-center gap-3">
                                     <div className="relative size-16 md:size-14">
                                         <Image 
-                                            src="/bgp-logo-color.png" 
+                                            src="/bjp-logo-color.png" 
                                             alt="BJP Logo" 
                                             fill 
                                             className="object-cover aspect-square" 

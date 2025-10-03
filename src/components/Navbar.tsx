@@ -4,7 +4,7 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import {
@@ -41,10 +41,39 @@ const navLinks = [
 export default function Navbar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
     const { t } = useTranslation();
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = lastScrollY;
+        const current = latest;
+
+        // Show navbar when scrolling up or at the top
+        if (current < previous || current < 10) {
+            setIsVisible(true);
+        } 
+        // Hide navbar when scrolling down
+        else if (current > previous && current > 100) {
+            setIsVisible(false);
+        }
+
+        setLastScrollY(current);
+    });
 
     return (
-        <nav className="fixed top-0 w-full py-2 bg-slate-50 z-[9999] border-b-2 border-orange-500 shadow-md">
+        <motion.nav 
+            className="fixed top-0 w-full py-2 bg-slate-50 z-[9999] border-b-2 border-orange-500 shadow-md"
+            initial={{ y: 0 }}
+            animate={{ y: isVisible ? 0 : -100 }}
+            transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                mass: 0.8
+            }}
+        >
             <MaxWidthWrapper className="h-full flex items-center justify-between">
                 {/* Logo Section */}
                 <div className="flex items-center gap-2">
@@ -54,8 +83,9 @@ export default function Navbar() {
                     <MainHeading className="text-2xl md:text-5xl tracking-wide font-bold bg-gradient-to-b from-orange-600 via-orange-400 text-shadow-2xs to-orange-600 text-transparent bg-clip-text">{t("navbar.name")}</MainHeading>
                 </div>
 
+                <div>
                 {/* Desktop Navigation - Hidden on Mobile */}
-                <div className="hidden md:flex items-center gap-4">
+                <div className="hidden md:flex items-center gap-10">
                     {navLinks.map((link) => (
                         <Link href={link.href} key={link.key} className="relative">
                             <MainHeading className={cn("relative z-20 text-lg font-bold transition-all duration-500", pathname === link.href ? "text-orange-500" : "text-gray-500")}>
@@ -113,7 +143,8 @@ export default function Navbar() {
                         </SheetContent>
                     </Sheet>
                 </div>
+                </div>
             </MaxWidthWrapper>
-        </nav>
+        </motion.nav>
     )
 }

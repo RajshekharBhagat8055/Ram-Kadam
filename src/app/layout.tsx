@@ -8,6 +8,7 @@ import I18nProvider from "@/components/I18nProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import ClientOnly from "@/components/ClientOnly";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-slate-50 text-black`}
+        className={`${geistSans.variable} ${geistMono.variable} relative antialiased min-h-screen flex flex-col bg-slate-50 text-black`}
       >
         <I18nProvider>
           <ClientOnly>
@@ -52,6 +53,7 @@ export default function RootLayout({
             <Footer />
           </ClientOnly>
         </I18nProvider>
+        <Toaster position="top-center" />
       </body>
     </html>
   );
