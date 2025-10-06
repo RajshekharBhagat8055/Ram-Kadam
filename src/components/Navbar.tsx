@@ -105,7 +105,7 @@ export default function Navbar() {
                         <SheetTrigger asChild className="md:hidden">
                             <Button variant="ghost" size="icon" className="hover:bg-orange-500/10">
                                 <Menu className="size-6 text-gray-700" />
-                                <span className="sr-only">Open menu</span>
+                                <span className="sr-only">{t('ui.openMenu')}</span>
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-slate-50">

@@ -6,6 +6,27 @@
     "query": "Query",
     "name": "RAM KADAM"
   },
+  "contact": {
+    "getInTouchDesc": "Get in touch with us through any of these channels",
+    "sendUsMessage": "Send us a Message",
+    "fillFormDesc": "Fill out the form below and we will get back to you as soon as possible",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "phone": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
+    "subject": "Subject",
+    "subjectPlaceholder": "Enter subject",
+    "message": "Message",
+    "messagePlaceholder": "Enter your message here...",
+    "sending": "Sending...",
+    "sendMessage": "Send Message",
+    "messageSuccess": "Message sent successfully! We'll get back to you soon.",
+    "ourLocation": "Our Location",
+    "mapTitle": "Interactive Map",
+    "mapDescription": "Map integration can be added here"
+  },
   "hero": {
     "title1": "Ram Kadam",
     "title2": "Serving the Community",
@@ -53,7 +74,9 @@
     "submitting": "Submitting...",
     "submitSuccess": "Query submitted successfully! Reference Number:",
     "submitSuccessDesc": "Please save this reference number to track your complaint status.",
-    "submitError": "Failed to submit query. Please try again."
+    "submitError": "Failed to submit query. Please try again.",
+    "copy": "Copy",
+    "copied": "Reference number copied to clipboard"
   },
   "contactPopup": {
     "title": "We're here for you 24/7",
@@ -66,6 +89,10 @@
     "hindi": "हिन्दी",
     "marathi": "मराठी",
     "changedTo": "Language changed to {{language}}"
+  },
+  "ui": {
+    "openMenu": "Open menu",
+    "close": "Close"
   },
   "about": {
     "title": "Ram Kadam: A Journey of Service and Dedication",
@@ -80,6 +107,52 @@
     "paragraph9": "A strong advocate for social harmony and cultural values, Ram Kadam frequently organizes health camps, blood donation drives, employment fairs, and celebratory community events. He is especially recognized for his swift interventions during crises and natural calamities, consistently standing by residents in times of need.",
     "paragraph10": "With a vision for inclusive growth and a better future for all, Ram Kadam continues his journey to bring positive, lasting change in the lives of people.",
     "readMore": "Read More"
+  },
+  "aboutPage": {
+    "location": "Ghatkopar West, Mumbai",
+    "mlaSince": "MLA since 2009",
+    "badges": {
+      "bjp": "Bharatiya Janata Party",
+      "mlaGhatkopar": "MLA Ghatkopar West",
+      "communityLeader": "Community Leader"
+    },
+    "sections": {
+      "journey": "Political Journey & Service",
+      "leadership": "Leadership & Public Service",
+      "keyAchievements": "Key Achievements & Initiatives",
+      "politicalTimeline": "Political Timeline",
+      "timelineDescription": "Key milestones in Ram Kadam's political career",
+      "visionForFuture": "Vision for the Future"
+    },
+    "achievements": {
+      "communityService": {
+        "title": "Community Service",
+        "description": "Organized free pilgrimage tours for lakhs of devotees"
+      },
+      "crisisResponse": {
+        "title": "Crisis Response",
+        "description": "Brought water trains (Jaldoot) to Latur during 2015 drought"
+      },
+      "culturalEngagement": {
+        "title": "Cultural Engagement",
+        "description": "Iconic Dahi Handi events in Mumbai with Bollywood celebrities"
+      },
+      "politicalLeadership": {
+        "title": "Political Leadership",
+        "description": "Multiple terms as MLA from Ghatkopar West"
+      }
+    },
+    "timeline": {
+      "2009": "First elected as MLA from Ghatkopar West",
+      "2014_join": "Joined Bharatiya Janata Party (BJP)",
+      "2014_re_elected": "Re-elected as MLA from Ghatkopar West",
+      "2015": "Brought water trains (Jaldoot) to Latur during drought",
+      "2019": "Re-elected as MLA for third consecutive term"
+    },
+    "vision": {
+      "p1": "Ram Kadam continues to work tirelessly for the development and welfare of his constituents. His vision encompasses sustainable development, community empowerment, and ensuring that every citizen has access to basic amenities and opportunities for growth.",
+      "p2": "Through his dedicated service and innovative initiatives, he aims to create a model constituency that serves as an example of effective governance and community development."
+    }
   },
   "statusTracker": {
     "title": "Track Complaint Status",

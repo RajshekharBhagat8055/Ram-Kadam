@@ -4,26 +4,14 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import MainHeading from "@/components/MainHeading";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { MdLocationOn, MdPhone, MdEmail, MdAccessTime, MdSend } from "react-icons/md";
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-import { useState } from "react";
-import { toast } from "sonner";
-import ClientOnly from "@/components/ClientOnly";
+
+import ClientOnly from "@/context/ClientOnly";
+import MessageForm from "@/components/ui/MessageForm";
 
 export default function Contact() {
     const { t } = useTranslation();
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const contactInfo = [
         {
@@ -59,37 +47,10 @@ export default function Contact() {
         { name: "YouTube", href: "https://www.youtube.com/@ramkadam7019", icon: FaYoutube, color: "hover:text-red-600" },
     ];
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        // Simulate form submission
-        setTimeout(() => {
-            toast.success("Message sent successfully! We'll get back to you soon.", {
-                duration: 5000,
-            });
-            setFormData({
-                name: "",
-                email: "",
-                phone: "",
-                subject: "",
-                message: ""
-            });
-            setIsSubmitting(false);
-        }, 2000);
-    };
-
     return (
         <section className='relative w-full overflow-hidden min-h-screen py-36'>
             <MaxWidthWrapper>
+                <ClientOnly>
                 <div className="space-y-16">
                     {/* Header Section */}
                     <div className="text-center space-y-4">
@@ -113,7 +74,7 @@ export default function Contact() {
                                         {t("footer.contactInfo")}
                                     </CardTitle>
                                     <CardDescription>
-                                        Get in touch with us through any of these channels
+                                        {t("contact.getInTouchDesc")}
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-6">
@@ -171,109 +132,7 @@ export default function Contact() {
                                 </CardContent>
                             </Card>
                         </div>
-
-                        {/* Contact Form */}
-                        <div>
-                            <Card className="shadow-lg">
-                                <CardHeader>
-                                    <CardTitle className="text-2xl font-bold text-orange-600 flex items-center gap-2">
-                                        <MdSend className="h-6 w-6" />
-                                        Send us a Message
-                                    </CardTitle>
-                                    <CardDescription>
-                                        Fill out the form below and we will get back to you as soon as possible
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <Label htmlFor="name">Full Name *</Label>
-                                                <Input
-                                                    id="name"
-                                                    name="name"
-                                                    type="text"
-                                                    required
-                                                    value={formData.name}
-                                                    onChange={handleInputChange}
-                                                    placeholder="Enter your full name"
-                                                />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="email">Email Address *</Label>
-                                                <Input
-                                                    id="email"
-                                                    name="email"
-                                                    type="email"
-                                                    required
-                                                    value={formData.email}
-                                                    onChange={handleInputChange}
-                                                    placeholder="Enter your email"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <Label htmlFor="phone">Phone Number</Label>
-                                                <Input
-                                                    id="phone"
-                                                    name="phone"
-                                                    type="tel"
-                                                    value={formData.phone}
-                                                    onChange={handleInputChange}
-                                                    placeholder="Enter your phone number"
-                                                />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="subject">Subject *</Label>
-                                                <Input
-                                                    id="subject"
-                                                    name="subject"
-                                                    type="text"
-                                                    required
-                                                    value={formData.subject}
-                                                    onChange={handleInputChange}
-                                                    placeholder="Enter subject"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-2">
-                                            <Label htmlFor="message">Message *</Label>
-                                            <Textarea
-                                                id="message"
-                                                name="message"
-                                                required
-                                                rows={6}
-                                                value={formData.message}
-                                                onChange={handleInputChange}
-                                                placeholder="Enter your message here..."
-                                                className="resize-none"
-                                            />
-                                        </div>
-
-                                        <Button 
-                                            type="submit" 
-                                            className="w-full bg-orange-500 hover:bg-orange-600 text-white"
-                                            disabled={isSubmitting}
-                                        >
-                                            {isSubmitting ? (
-                                                <>
-                                                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                                                    Sending...
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <MdSend className="h-4 w-4 mr-2" />
-                                                    Send Message
-                                                </>
-                                            )}
-                                        </Button>
-                                    </form>
-                                </CardContent>
-                            </Card>
-                        </div>
+                        <MessageForm />
                     </div>
 
                     {/* Map Section */}
@@ -281,20 +140,21 @@ export default function Contact() {
                         <CardHeader>
                             <CardTitle className="text-2xl font-bold text-orange-600 flex items-center gap-2">
                                 <MdLocationOn className="h-6 w-6" />
-                                Our Location
+                                {t("contact.ourLocation")}
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="bg-gray-100 rounded-lg h-64 flex items-center justify-center">
                                 <div className="text-center text-gray-500">
                                     <MdLocationOn className="h-12 w-12 mx-auto mb-4" />
-                                    <p className="text-lg font-medium">Interactive Map</p>
-                                    <p className="text-sm">Map integration can be added here</p>
+                                    <p className="text-lg font-medium">{t("contact.mapTitle")}</p>
+                                    <p className="text-sm">{t("contact.mapDescription")}</p>
                                 </div>
                             </div>
                         </CardContent>
                     </Card>
                 </div>
+                </ClientOnly>
             </MaxWidthWrapper>
         </section>
     );

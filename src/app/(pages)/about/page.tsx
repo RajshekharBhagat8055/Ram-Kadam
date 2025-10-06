@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, MapPin, Users, Heart, Award, Star } from "lucide-react";
-import ClientOnly from "@/components/ClientOnly";
+import ClientOnly from "@/context/ClientOnly";
 
 const AboutPage = () => {
     const { t } = useTranslation();
@@ -15,102 +15,95 @@ const AboutPage = () => {
     const achievements = [
         {
             icon: <Users className="h-6 w-6" />,
-            title: "Community Service",
-            description: "Organized free pilgrimage tours for lakhs of devotees"
+            title: t('aboutPage.achievements.communityService.title'),
+            description: t('aboutPage.achievements.communityService.description')
         },
         {
             icon: <Heart className="h-6 w-6" />,
-            title: "Crisis Response",
-            description: "Brought water trains (Jaldoot) to Latur during 2015 drought"
+            title: t('aboutPage.achievements.crisisResponse.title'),
+            description: t('aboutPage.achievements.crisisResponse.description')
         },
         {
             icon: <Award className="h-6 w-6" />,
-            title: "Cultural Engagement",
-            description: "Iconic Dahi Handi events in Mumbai with Bollywood celebrities"
+            title: t('aboutPage.achievements.culturalEngagement.title'),
+            description: t('aboutPage.achievements.culturalEngagement.description')
         },
         {
             icon: <Star className="h-6 w-6" />,
-            title: "Political Leadership",
-            description: "Multiple terms as MLA from Ghatkopar West"
+            title: t('aboutPage.achievements.politicalLeadership.title'),
+            description: t('aboutPage.achievements.politicalLeadership.description')
         }
     ];
 
     const timeline = [
         {
             year: "2009",
-            event: "First elected as MLA from Ghatkopar West (MNS)"
+            event: t('aboutPage.timeline.2009')
         },
         {
             year: "2014",
-            event: "Joined Bharatiya Janata Party (BJP)"
+            event: t('aboutPage.timeline.2014_join')
         },
         {
             year: "2014",
-            event: "Re-elected as MLA from Ghatkopar West"
+            event: t('aboutPage.timeline.2014_re_elected')
         },
         {
             year: "2015",
-            event: "Brought water trains (Jaldoot) to Latur during drought"
+            event: t('aboutPage.timeline.2015')
         },
         {
             year: "2019",
-            event: "Re-elected as MLA for third consecutive term"
+            event: t('aboutPage.timeline.2019')
         }
     ];
 
     return (
-        <section className='relative w-full overflow-hidden min-h-screen'>
+        <section className='relative w-full overflow-hidden my-20'>
             {/* Hero Section */}
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 py-16">
                 <MaxWidthWrapper>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 items-center">
                         <div className="relative">
                             <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border-4 border-orange-500 shadow-2xl">
-                                <Image 
-                                    src="/ram-kadam-potrait.png" 
-                                    alt="Ram Kadam" 
-                                    fill 
-                                    className="object-cover" 
+                                <Image
+                                    src="/ram-kadam-potrait.png"
+                                    alt="Ram Kadam"
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
-                            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                                <Image 
-                                    src="/bjp-logo-color.png" 
-                                    alt="BJP Logo" 
-                                    width={48} 
-                                    height={48} 
-                                    className="object-contain" 
-                                />
+                            <div className="absolute size-32 bg-orange-100 shadow-md shadow-black/50 rounded-full -bottom-9 -right-9 ring-2 ring-orange-500 flex items-center justify-center">
+                                <Image src="/bjp-logo-color.png" alt="BJP Logo" height={100} width={100} className="object-cover" />
                             </div>
                         </div>
-                        
                         <div className="space-y-6">
                             <ClientOnly>
-                                <MainHeading className="text-3xl md:text-4xl lg:text-5xl font-bold text-orange-600 leading-tight">
+                                <MainHeading className="text-3xl md:text-4xl lg:text-6xl font-bold text-orange-600 leading-tight">
                                     {t("about.title")}
                                 </MainHeading>
                             </ClientOnly>
-                            
+
                             <div className="flex items-center gap-4 text-gray-600">
                                 <div className="flex items-center gap-2">
                                     <MapPin className="h-5 w-5" />
-                                    <span>Ghatkopar West, Mumbai</span>
+                                    <span>{t('aboutPage.location')}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <CalendarDays className="h-5 w-5" />
-                                    <span>MLA since 2009</span>
+                                    <span>{t('aboutPage.mlaSince')}</span>
                                 </div>
                             </div>
 
                             <div className="flex flex-wrap gap-2">
                                 <Badge className="bg-orange-100 text-orange-800 border-orange-200">
-                                    Bharatiya Janata Party
+                                    {t('aboutPage.badges.bjp')}
                                 </Badge>
                                 <Badge className="bg-blue-100 text-blue-800 border-blue-200">
-                                    MLA Ghatkopar West
+                                    {t('aboutPage.badges.mlaGhatkopar')}
                                 </Badge>
                                 <Badge className="bg-green-100 text-green-800 border-green-200">
-                                    Community Leader
+                                    {t('aboutPage.badges.communityLeader')}
                                 </Badge>
                             </div>
                         </div>
@@ -126,7 +119,7 @@ const AboutPage = () => {
                         <CardHeader>
                             <CardTitle className="text-2xl font-bold text-orange-600 flex items-center gap-2">
                                 <Users className="h-6 w-6" />
-                                Political Journey & Service
+                                {t('aboutPage.sections.journey')}
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-6">
@@ -147,7 +140,7 @@ const AboutPage = () => {
                         <CardHeader>
                             <CardTitle className="text-2xl font-bold text-orange-600 flex items-center gap-2">
                                 <Heart className="h-6 w-6" />
-                                Leadership & Public Service
+                                {t('aboutPage.sections.leadership')}
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-6">
@@ -166,7 +159,7 @@ const AboutPage = () => {
                     {/* Achievements Section */}
                     <div>
                         <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-                            Key Achievements & Initiatives
+                            {t('aboutPage.sections.keyAchievements')}
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {achievements.map((achievement, index) => (
@@ -192,10 +185,10 @@ const AboutPage = () => {
                         <CardHeader>
                             <CardTitle className="text-2xl font-bold text-orange-600 flex items-center gap-2">
                                 <CalendarDays className="h-6 w-6" />
-                                Political Timeline
+                                {t('aboutPage.sections.politicalTimeline')}
                             </CardTitle>
                             <CardDescription>
-                                Key milestones in Ram Kadam&apos;s political career
+                                {t('aboutPage.sections.timelineDescription')}
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
@@ -221,20 +214,13 @@ const AboutPage = () => {
                     <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
                         <CardHeader>
                             <CardTitle className="text-2xl font-bold text-orange-600">
-                                Vision for the Future
+                                {t('aboutPage.sections.visionForFuture')}
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="text-lg text-gray-700 space-y-4">
-                                <p>
-                                    Ram Kadam continues to work tirelessly for the development and welfare of his constituents. 
-                                    His vision encompasses sustainable development, community empowerment, and ensuring that 
-                                    every citizen has access to basic amenities and opportunities for growth.
-                                </p>
-                                <p>
-                                    Through his dedicated service and innovative initiatives, he aims to create a model 
-                                    constituency that serves as an example of effective governance and community development.
-                                </p>
+                                <p>{t('aboutPage.vision.p1')}</p>
+                                <p>{t('aboutPage.vision.p2')}</p>
                             </div>
                         </CardContent>
                     </Card>

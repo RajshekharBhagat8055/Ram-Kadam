@@ -6,7 +6,7 @@ import { buttonVariants } from "../ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
-import ClientOnly from "../ClientOnly";
+import ClientOnly from "../../context/ClientOnly";
 
 export default function AboutSection() {
     const { t } = useTranslation();
@@ -14,8 +14,11 @@ export default function AboutSection() {
     return (
         <section id="about" className="py-16 relative w-full overflow-hidden">
             <MaxWidthWrapper className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="relative w-full aspect-square rounded-xl overflow-hidden border-2 border-orange-500">
-                    <Image src="/ram-kadam-potrait.png" alt="Ram Kadam" fill className="object-cover" />
+                <div className="relative w-full aspect-square rounded-xl border-2 border-orange-500">
+                    <Image src="/ram-kadam-potrait.png" alt="Ram Kadam" fill className="object-cover rounded-xl" />
+                    <div className="absolute size-32 bg-orange-100 shadow-md shadow-black/50 rounded-full -bottom-9 -right-9 ring-2 ring-orange-500 flex items-center justify-center">
+                        <Image src="/bjp-logo-color.png" alt="BJP Logo" height={100} width={100} className="object-cover" />
+                    </div>
                 </div>
                 <div className="relative flex flex-col gap-4">
                     <div className="absolute inset-0 -z-10">

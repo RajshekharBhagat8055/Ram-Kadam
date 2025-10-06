@@ -43,13 +43,29 @@ export default function QueryForm() {
       const response = await axios.post('/api/queries', data);
       
       if (response.data.success) {
-        toast.success(
-          `${t('queryForm.submitSuccess')} ${response.data.data.referenceNumber}`,
-          {
-            duration: 5000,
-            description: t('queryForm.submitSuccessDesc'),
-          }
-        );
+        const referenceNumber = response.data.data.referenceNumber;
+        toast.custom((id) => (
+          <div className="flex flex-col gap-2 bg-white rounded-xl p-3 shadow-md shadow-black/50">
+            <div className="font-semibold">{`${t('queryForm.submitSuccess')} ${referenceNumber}`}</div>
+            <div className="text-gray-800 text-sm">{t('queryForm.submitSuccessDesc')}</div>
+            <div className="mt-1">
+              <Button
+                size="sm"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(referenceNumber);
+                    toast.success(t('queryForm.copied'));
+                    toast.dismiss(id);
+                  } catch (err) {
+                    console.error('Clipboard copy failed', err);
+                  }
+                }}
+              >
+                {t('queryForm.copy')}
+              </Button>
+            </div>
+          </div>
+        ), { duration: 6000 });
         
         // Reset form after successful submission
         form.reset();
@@ -83,7 +99,7 @@ export default function QueryForm() {
           {t("queryForm.subtitle")}
         </p>
       </div>
-
+    
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -2,7 +2,9 @@
 import AboutSection from "@/components/Landing Components/About";
 import Hero, { HeroSlide } from "@/components/Landing Components/Hero";
 import { useTranslation } from "react-i18next";
-import ClientOnly from "@/components/ClientOnly";
+import ClientOnly from "@/context/ClientOnly";
+import MessageCTA from "@/components/Landing Components/MessageCTA";
+import QueryCTA from "@/components/Landing Components/QueryCTA";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -33,8 +35,10 @@ export default function Home() {
     <div className="">
       <ClientOnly>
         <Hero slides={heroSlides} autoPlayInterval={5000} />
+        <AboutSection />
+        <MessageCTA />
+        <QueryCTA />
       </ClientOnly>
-      <AboutSection />
     </div>
   );
 }

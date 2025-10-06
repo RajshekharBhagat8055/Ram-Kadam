@@ -1,10 +1,10 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper"
 import StatusTracker from "@/components/StatusTracker"
-import ClientOnly from "@/components/ClientOnly"
+import ClientOnly from "@/context/ClientOnly"
 
 const ComplaintStatusPage = () => {
     return (
-        <MaxWidthWrapper className="min-h-screen py-10">
+        <MaxWidthWrapper className="min-h-screen py-36">
             <ClientOnly>
                 <StatusTracker />
             </ClientOnly>

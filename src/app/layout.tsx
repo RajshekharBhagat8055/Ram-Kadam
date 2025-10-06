@@ -4,10 +4,10 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactPopup from "@/components/ContactPopup";
-import I18nProvider from "@/components/I18nProvider";
+import I18nProvider from "@/context/I18nProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
-import ClientOnly from "@/components/ClientOnly";
+import ClientOnly from "@/context/ClientOnly";
 import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
