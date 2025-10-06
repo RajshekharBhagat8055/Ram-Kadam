@@ -192,17 +192,17 @@ const AboutPage = () => {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <div className="space-y-6">
+                            <div className="space-y-6  relative">
                                 {timeline.map((item, index) => (
-                                    <div key={index} className="flex items-start gap-4">
-                                        <div className="flex-shrink-0 w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <div key={index} className="flex items-center gap-4">
+                                        <div className="relative z-[20] flex-shrink-0 w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
                                             <span className="text-orange-600 font-bold text-sm">{item.year}</span>
                                         </div>
                                         <div className="flex-1 pt-2">
                                             <p className="text-gray-700">{item.event}</p>
                                         </div>
                                         {index < timeline.length - 1 && (
-                                            <div className="absolute left-8 mt-16 w-0.5 h-8 bg-orange-200"></div>
+                                            <div className="absolute left-8 mt-16 w-0.5 h-14 bg-orange-200"></div>
                                         )}
                                     </div>
                                 ))}
